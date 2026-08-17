@@ -19,29 +19,48 @@
 
 ```mermaid
 flowchart TD
-    User["👤 User Query or Order ID"] --> Router["🧠 Semantic Intent Router (4-Way Classifier)"]
+    subgraph ClientLayer ["1. Client Interface"]
+        User["👤 User Query / Tracking ID"]
+    end
 
-    Router --> Route1["🛒 Route 1: Hardware Catalog & Pricing"]
-    Router --> Route2["📚 Route 2: Warranty, RMA & Shipping FAQs"]
-    Router --> Route3["🚚 Route 3: Real-Time Order & Logistics Tracking"]
-    Router --> Route4["🤖 Route 4: Conversational Chit-Chat & Guidance"]
+    subgraph RouterLayer ["2. Intent Classification"]
+        Router["🧠 Semantic Intent Router (4 Routes)"]
+    end
 
-    Route1 --> SQLGen["⚙️ Text-to-SQL Query Generator"]
-    Route2 --> FAQVector["🔍 Vector FAQ Similarity Engine"]
-    Route3 --> OrderTracker["📦 Order & Logistics Subsystem"]
-    Route4 --> SmallTalk["💬 Conversational AI Agent"]
+    subgraph Engines ["3. Specialized Execution Engines"]
+        SQLGen["🛒 SQL Catalog Engine"]
+        FAQVector["📚 Vector FAQ Engine"]
+        OrderTracker["🚚 Logistics Tracker"]
+        SmallTalk["💬 Small-Talk Agent"]
+    end
 
-    SQLGen --> SQLDB[("🗄️ SQLite Enterprise Catalog DB")]
-    FAQVector --> FAQDB[("📁 Vector FAQ Knowledge Base")]
-    OrderTracker --> OrdersDB[("📋 Customer Orders Registry")]
+    subgraph DataTier ["4. Enterprise Data Tier"]
+        SQLDB[("🗄️ SQLite Catalog")]
+        FAQDB[("📁 Vector FAQs")]
+        OrdersDB[("📋 Orders Registry")]
+    end
 
-    SQLDB --> Formatter["📄 Markdown Product Card Synthesizer"]
+    subgraph Presentation ["5. Delivery & Synthesis"]
+        Formatter["📄 Markdown Card & Response Synthesizer"]
+        UI["💻 Streamlit Dashboard (app.py) & FastAPI (api.py)"]
+    end
+
+    User --> Router
+    Router --> SQLGen
+    Router --> FAQVector
+    Router --> OrderTracker
+    Router --> SmallTalk
+
+    SQLGen --> SQLDB
+    FAQVector --> FAQDB
+    OrderTracker --> OrdersDB
+
+    SQLDB --> Formatter
     FAQDB --> Formatter
     OrdersDB --> Formatter
     SmallTalk --> Formatter
 
-    Formatter --> UI["💻 Streamlit Web Application (app.py)"]
-    Formatter --> API["🌐 FastAPI REST Service (api.py)"]
+    Formatter --> UI
 ```
 
 ---
