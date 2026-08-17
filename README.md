@@ -17,7 +17,12 @@
 
 ## 🌟 Multi-Route System Architecture
 
-```text
+<div align="center">
+  <img src="assets/architecture_diagram.png" alt="#Gyan Labs AI Commerce Architecture Diagram" width="95%" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+</div>
+
+<details open>
+<summary><b>📐 Text-Based Architecture View</b></summary>
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                       1. CLIENT INTERFACE LAYER                          │
 │       👤 User Query (Natural Language)   •   📦 Order Tracking ID        │
@@ -56,6 +61,7 @@
      │   Interactive Chat & Explorer │ │   Production Microservice         │
      └───────────────────────────────┘ └───────────────────────────────────┘
 ```
+</details>
 
 ---
 
