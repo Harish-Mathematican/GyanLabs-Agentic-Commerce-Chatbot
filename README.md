@@ -20,29 +20,29 @@
 ```mermaid
 flowchart TD
     subgraph ClientLayer ["1. Client Interface"]
-        User["👤 User Query / Tracking ID"]
+        User["👤 User Query /<br/>Tracking ID"]
     end
 
     subgraph RouterLayer ["2. Intent Classification"]
-        Router["🧠 Semantic Intent Router (4 Routes)"]
+        Router["🧠 Semantic Intent Router<br/>(4-Way Classifier)"]
     end
 
     subgraph Engines ["3. Specialized Execution Engines"]
-        SQLGen["🛒 SQL Catalog Engine"]
-        FAQVector["📚 Vector FAQ Engine"]
-        OrderTracker["🚚 Logistics Tracker"]
-        SmallTalk["💬 Small-Talk Agent"]
+        SQLGen["🛒 SQL Catalog<br/>Engine"]
+        FAQVector["📚 Vector FAQ<br/>Engine"]
+        OrderTracker["🚚 Logistics<br/>Tracker"]
+        SmallTalk["💬 Small-Talk<br/>Agent"]
     end
 
     subgraph DataTier ["4. Enterprise Data Tier"]
-        SQLDB[("🗄️ SQLite Catalog")]
-        FAQDB[("📁 Vector FAQs")]
-        OrdersDB[("📋 Orders Registry")]
+        SQLDB[("🗄️ SQLite<br/>Catalog")]
+        FAQDB[("📁 Vector<br/>FAQs")]
+        OrdersDB[("📋 Orders<br/>Registry")]
     end
 
     subgraph Presentation ["5. Delivery & Synthesis"]
-        Formatter["📄 Markdown Card & Response Synthesizer"]
-        UI["💻 Streamlit Dashboard (app.py) & FastAPI (api.py)"]
+        Formatter["📄 Card & Response<br/>Synthesizer"]
+        UI["💻 Streamlit Dashboard<br/>& FastAPI Microservice"]
     end
 
     User --> Router
