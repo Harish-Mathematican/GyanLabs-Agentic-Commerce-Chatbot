@@ -1,0 +1,31 @@
+[project]
+name = "gyanlabs-agentic-commerce-chatbot"
+version = "1.0.0"
+description = "Enterprise AI Hardware & Cloud Infrastructure Commerce Chatbot with Semantic Intent Routing, Text-to-SQL, Vector FAQ & Order Tracking."
+readme = "README.md"
+authors = [
+    { name = "Harish Dhakal", email = "harish.dhakal@gyanlabs.ai" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.35.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.0",
+    "pandas>=2.0.0",
+    "pytest>=8.0.0",
+]
+
+[project.optional-dependencies]
+ai = [
+    "groq>=0.9.0",
+    "openai>=1.20.0",
+    "sentence-transformers>=2.7.0",
+    "chromadb>=0.5.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
