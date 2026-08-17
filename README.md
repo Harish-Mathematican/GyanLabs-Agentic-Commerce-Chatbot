@@ -19,24 +19,24 @@
 
 ```mermaid
 flowchart TD
-    UserQuery["User Asks Question or Enters Order ID"] --> Router{"Semantic Intent Router (4-Way Classification)"}
+    UserQuery["👤 User Query / Order ID"] --> Router{"🧠 Semantic Intent Router<br/>(4-Way Classification)"}
 
-    Router -->|🛒 Hardware Catalog & Pricing| SQLGen["Text-to-SQL Generator"]
-    Router -->|📚 Warranty, RMA & Shipping Policies| FAQVector["Vector FAQ Similarity Search"]
-    Router -->|📦 Order Status & Carrier Tracking| OrderTracker["Live Order & Logistics DB"]
-    Router -->|💬 Chit-Chat & Guidance| SmallTalk["Conversational Agent"]
+    Router -->|"🛒 Hardware Catalog & Pricing"| SQLGen["⚙️ Text-to-SQL Generator"]
+    Router -->|"📚 Warranty & RMA Policies"| FAQVector["🔍 Vector FAQ Engine"]
+    Router -->|"📦 Order & Shipment Tracking"| OrderTracker["🚚 Order & Logistics Engine"]
+    Router -->|"💬 Chit-Chat & Guidance"| SmallTalk["🤖 Conversational Agent"]
 
-    SQLGen --> SQLDB[("SQLite Enterprise Catalog")]
-    FAQVector --> FAQDB[("Vector Knowledge Base")]
-    OrderTracker --> OrdersDB[("Customer Orders Registry")]
+    SQLGen --> SQLDB[("🗄️ SQLite Catalog DB")]
+    FAQVector --> FAQDB[("📁 Vector Knowledge Base")]
+    OrderTracker --> OrdersDB[("📋 Orders Registry")]
 
-    SQLDB --> Formatter["Markdown Product Card Synthesizer"]
+    SQLDB --> Formatter["📄 Markdown Card Synthesizer"]
     FAQDB --> Formatter
     OrdersDB --> Formatter
     SmallTalk --> Formatter
 
-    Formatter --> StreamlitUI["Streamlit Interactive UI (app.py)"]
-    Formatter --> RESTAPI["FastAPI Endpoints (api.py)"]
+    Formatter --> StreamlitUI["💻 Streamlit Web UI (app.py)"]
+    Formatter --> RESTAPI["🌐 FastAPI Microservice (api.py)"]
 ```
 
 ---
