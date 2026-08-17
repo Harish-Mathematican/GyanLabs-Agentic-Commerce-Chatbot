@@ -17,50 +17,44 @@
 
 ## 🌟 Multi-Route System Architecture
 
-```mermaid
-flowchart TD
-    subgraph ClientLayer ["1. Client Interface"]
-        User["👤 User Query /<br/>Tracking ID"]
-    end
-
-    subgraph RouterLayer ["2. Intent Classification"]
-        Router["🧠 Semantic Intent Router<br/>(4-Way Classifier)"]
-    end
-
-    subgraph Engines ["3. Specialized Execution Engines"]
-        SQLGen["🛒 SQL Catalog<br/>Engine"]
-        FAQVector["📚 Vector FAQ<br/>Engine"]
-        OrderTracker["🚚 Logistics<br/>Tracker"]
-        SmallTalk["💬 Small-Talk<br/>Agent"]
-    end
-
-    subgraph DataTier ["4. Enterprise Data Tier"]
-        SQLDB[("🗄️ SQLite<br/>Catalog")]
-        FAQDB[("📁 Vector<br/>FAQs")]
-        OrdersDB[("📋 Orders<br/>Registry")]
-    end
-
-    subgraph Presentation ["5. Delivery & Synthesis"]
-        Formatter["📄 Card & Response<br/>Synthesizer"]
-        UI["💻 Streamlit Dashboard<br/>& FastAPI Microservice"]
-    end
-
-    User --> Router
-    Router --> SQLGen
-    Router --> FAQVector
-    Router --> OrderTracker
-    Router --> SmallTalk
-
-    SQLGen --> SQLDB
-    FAQVector --> FAQDB
-    OrderTracker --> OrdersDB
-
-    SQLDB --> Formatter
-    FAQDB --> Formatter
-    OrdersDB --> Formatter
-    SmallTalk --> Formatter
-
-    Formatter --> UI
+```text
+┌──────────────────────────────────────────────────────────────────────────┐
+│                       1. CLIENT INTERFACE LAYER                          │
+│       👤 User Query (Natural Language)   •   📦 Order Tracking ID        │
+└────────────────────────────────────┬─────────────────────────────────────┘
+                                     │
+                                     ▼
+┌──────────────────────────────────────────────────────────────────────────┐
+│                       2. SEMANTIC INTENT ROUTER                          │
+│             4-Way Autonomous AI Classifier (Sub-5ms Latency)             │
+└───────────────┬────────────────────┬────────────────────┬────────────────┘
+                │                    │                    │
+                ▼                    ▼                    ▼
+     ┌─────────────────────┐┌─────────────────────┐┌───────────────────────┐
+     │ 🛒 HARDWARE CATALOG ││ 📚 POLICY & FAQS    ││ 🚚 LOGISTICS TRACKER  │
+     │  Text-to-SQL Engine ││  Vector Cosine Search││  Carrier Order Status│
+     └──────────┬──────────┘└──────────┬──────────┘└───────────┬───────────┘
+                │                      │                       │
+                ▼                      ▼                       ▼
+     ┌─────────────────────┐┌─────────────────────┐┌───────────────────────┐
+     │ 🗄️ SQLite Catalog DB││ 📁 Vector Knowledge ││ 📋 Orders Registry   │
+     │  (GPU Nodes & Specs)││  (Warranty & RMA)   ││  (FedEx/UPS/CanadaPost│
+     └──────────┬──────────┘└──────────┬──────────┘└───────────┬───────────┘
+                │                      │                       │
+                └──────────────────────┼───────────────────────┘
+                                       │
+                                       ▼
+┌──────────────────────────────────────────────────────────────────────────┐
+│                       3. SYNTHESIS & PRESENTATION                        │
+│          📄 Markdown Product Cards  •  🏷️ Enterprise Discount Badges     │
+└────────────────────────────────────┬─────────────────────────────────────┘
+                                     │
+                     ┌───────────────┴───────────────┐
+                     ▼                               ▼
+     ┌───────────────────────────────┐ ┌───────────────────────────────────┐
+     │ 💻 Streamlit UI (app.py)      │ │ 🌐 FastAPI REST API (api.py)      │
+     │   Interactive Chat & Explorer │ │   Production Microservice         │
+     └───────────────────────────────┘ └───────────────────────────────────┘
 ```
 
 ---
