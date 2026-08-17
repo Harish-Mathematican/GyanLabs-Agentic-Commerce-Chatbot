@@ -21,48 +21,6 @@
   <img src="assets/architecture_diagram.png" alt="#Gyan Labs AI Commerce Architecture Diagram" width="95%" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
 </div>
 
-<details open>
-<summary><b>📐 Text-Based Architecture View</b></summary>
-┌──────────────────────────────────────────────────────────────────────────┐
-│                       1. CLIENT INTERFACE LAYER                          │
-│       👤 User Query (Natural Language)   •   📦 Order Tracking ID        │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-                                     ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│                       2. SEMANTIC INTENT ROUTER                          │
-│             4-Way Autonomous AI Classifier (Sub-5ms Latency)             │
-└───────────────┬────────────────────┬────────────────────┬────────────────┘
-                │                    │                    │
-                ▼                    ▼                    ▼
-     ┌─────────────────────┐┌─────────────────────┐┌───────────────────────┐
-     │ 🛒 HARDWARE CATALOG ││ 📚 POLICY & FAQS    ││ 🚚 LOGISTICS TRACKER  │
-     │  Text-to-SQL Engine ││  Vector Cosine Search││  Carrier Order Status│
-     └──────────┬──────────┘└──────────┬──────────┘└───────────┬───────────┘
-                │                      │                       │
-                ▼                      ▼                       ▼
-     ┌─────────────────────┐┌─────────────────────┐┌───────────────────────┐
-     │ 🗄️ SQLite Catalog DB││ 📁 Vector Knowledge ││ 📋 Orders Registry   │
-     │  (GPU Nodes & Specs)││  (Warranty & RMA)   ││  (FedEx/UPS/CanadaPost│
-     └──────────┬──────────┘└──────────┬──────────┘└───────────┬───────────┘
-                │                      │                       │
-                └──────────────────────┼───────────────────────┘
-                                       │
-                                       ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│                       3. SYNTHESIS & PRESENTATION                        │
-│          📄 Markdown Product Cards  •  🏷️ Enterprise Discount Badges     │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-                     ┌───────────────┴───────────────┐
-                     ▼                               ▼
-     ┌───────────────────────────────┐ ┌───────────────────────────────────┐
-     │ 💻 Streamlit UI (app.py)      │ │ 🌐 FastAPI REST API (api.py)      │
-     │   Interactive Chat & Explorer │ │   Production Microservice         │
-     └───────────────────────────────┘ └───────────────────────────────────┘
-```
-</details>
-
 ---
 
 ## 🚀 Key Subsystems & Capabilities
